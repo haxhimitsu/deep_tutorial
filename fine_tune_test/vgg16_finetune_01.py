@@ -42,7 +42,7 @@ import random
 
 config = tf.ConfigProto(
       gpu_options=tf.GPUOptions(
-          per_process_gpu_memory_fraction=0.7, # 最大値の80%まで
+          per_process_gpu_memory_fraction=0.3, # 最大値の80%まで
           allow_growth=True # True->必要になったら確保, False->全部
       )
     )

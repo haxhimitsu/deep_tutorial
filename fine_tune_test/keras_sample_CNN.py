@@ -297,7 +297,7 @@ ORG_trim_Y = 32
 test_count = 0
 for i, d in enumerate(img_dirs3):
     files4 = os.listdir('/home/hachimine/Desktop/deeplearning_tutorial/fine_tune_test/dataset2/' + d)
-    with open('file\\'+filename,mode='a') as f:
+    with open(filename,mode='a') as f:
         f.write('ディレクトリ名,画像名,摩耗砥粒[%],付着物[%]\n')
         f.write(d)
     for f4 in files4:
@@ -324,8 +324,9 @@ for i, d in enumerate(img_dirs3):
        nichi = cv2.dilate(nichi, neiborhood8, iterations=1)
        nichi = cv2.erode(nichi, neiborhood8, iterations=1)
 
-       cv2.imshow("BIN",nichi)
+       #cv2.imshow("BIN",nichi)
        label = cv2.connectedComponentsWithStats(nichi)#ラベリング
+       ##label[0]=ラベルの個数，label[2]=data,label[3]=ラベル重心
        n = label[0] - 1#ラベルの個数取得とラベル重心cogを取得
        cog = np.delete(label[3], 0, 0)
                        
@@ -402,21 +403,20 @@ for i, d in enumerate(img_dirs3):
        print(f4+'--> Class2:'+str(count2))
        print(f4+'--> Class3:'+str(count3))
        print(f4+'--> Class4:'+str(count4))
-       cv2.imshow("desktop", test_1)
+       #cv2.imshow("desktop", test_1)
 #       cv2.imwrite('dataset2\\trim1\\res3_'+f4, test_1)
 #       cv2.imwrite('dataset2\\trim2\\'+f4, test_1)
        
-       cv2.imshow("abrasive", blank_1)
-       cv2.imshow("extraneous", blank2_1)
+       #cv2.imshow("abrasive", blank_1)
+       #cv2.imshow("extraneous", blank2_1)
        img_size=height*width
        whitePx=cv2.countNonZero(blank_1)
        whitePx2=cv2.countNonZero(blank2_1)
        whiteArea=(whitePx/img_size)*100#[%]
        whiteArea2=(whitePx2/img_size)*100#[%]
-       with open('file\\'+filename,mode='a') as f:
+       with open(filename,mode='a') as f:
             f.write(','+f4)
             f.write(','+str(whiteArea))
             f.write(','+str(whiteArea2)+'\n')
-    cv2.waitKey(0)
-    cv2.destroyAllWindows(0) & 0xFF
+
 
