@@ -49,7 +49,7 @@ sess = sess = tf.Session(config=config)
 
 
 EPOCHS = 100
-h5 = 'CNN_weight_goki_original_00.h5' #使用する重みファイル名(存在しないファイル名を書くと学習を開始し，その名前で重みファイルを保存)
+h5 = 'CNN_weight_goki_original_01.h5' #使用する重みファイル名(存在しないファイル名を書くと学習を開始し，その名前で重みファイルを保存)
 #h5 = 'weight\cnn_model05-loss0.35-acc0.87-vloss0.31-vacc0.89.hdf5'
 #epoch_count = 1
 
